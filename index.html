@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SORRISSO MT • Turismo sem site • Prospecção Premium</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{font-family:Inter,system-ui;background:#0A0F0D;color:#EDE8DA}
+.serif{font-family:Fraunces,serif}
+.gold{background:linear-gradient(135deg,#D4AF37,#F5E6A8,#B8860B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card{background:linear-gradient(180deg,#131B18,#0E1512);border:1px solid #2A352F;border-radius:20px}
+.card.fav{border-color:#D4AF37;box-shadow:0 0 0 1px #D4AF37,0 20px 60px -20px rgba(212,175,55,.35)}
+.btn-call{background:#16a34a}.btn-wa{background:#22c55e;color:#06270f}.chip{border:1px solid #33453c}
+.hero-bg{background:radial-gradient(800px 400px at 20% 0%,rgba(212,175,55,.18),transparent),radial-gradient(700px 380px at 90% 10%,rgba(34,197,94,.15),transparent),linear-gradient(#0A0F0D,#0A0F0D)}
+.stickybar{backdrop-filter:blur(12px);background:rgba(10,15,13,.85)}
+details summary{cursor:pointer}
+</style>
+</head>
+<body class="hero-bg">
+<header class="max-w-6xl mx-auto px-4 pt-8 pb-4">
+<div class="text-xs tracking-[.3em] text-lime-200/70">CAPITAL NACIONAL DO AGRO • SORRISSO — MT</div>
+<h1 class="serif text-4xl md:text-6xl font-black leading-tight mt-2"><span class="gold">Turismo que lota</span> mas não tem site.</h1>
+<p class="mt-3 text-stone-300 max-w-3xl">36 hospedagens • ~2.000 leitos • 85% ocupação na semana. Página feita para ligar do celular: toque, chame no Whats, marque ★ e feche.</p>
+<div class="mt-3 inline-flex items-center gap-2 text-sm bg-green-500/10 border border-green-500/40 rounded-full px-4 py-2">Prospectando de: <b>(11) 93072-9435</b> <a href="https://wa.me/5511930729435?text=Teste%20meu%20Whats%20de%20prospec%C3%A7%C3%A3o" target="_blank" class="underline font-bold">Abrir meu Whats →</a></div>
+<div class="grid grid-cols-3 gap-3 mt-5 max-w-3xl">
+<div class="card p-4 text-center"><div class="serif text-3xl font-black gold">36</div><div class="text-xs text-stone-400">meios de hospedagem</div></div>
+<div class="card p-4 text-center"><div class="serif text-3xl font-black gold">85%</div><div class="text-xs text-stone-400">ocupação semana</div></div>
+<div class="card p-4 text-center"><div class="serif text-3xl font-black gold">15</div><div class="text-xs text-stone-400">alvos sem site próprio</div></div>
+</div>
+<div class="stickybar sticky top-0 mt-6 p-3 rounded-2xl border border-stone-800 flex flex-wrap gap-2 items-center">
+<input id="q" placeholder="Buscar: hotel, agência, restaurante, rio..." class="bg-black/40 border border-stone-700 rounded-xl px-4 py-3 flex-1 min-w-[220px] outline-none" oninput="render()">
+<button data-f="all" class="fbtn chip rounded-full px-4 py-2 text-sm">Todos</button>
+<button data-f="fav" class="fbtn chip rounded-full px-4 py-2 text-sm">★ Favoritos <span id="nfav"></span></button>
+<button data-f="tel" class="fbtn chip rounded-full px-4 py-2 text-sm">Com tel</button>
+<button data-f="agencia" class="fbtn chip rounded-full px-4 py-2 text-sm">Agências</button>
+<button data-f="hotel" class="fbtn chip rounded-full px-4 py-2 text-sm">Hotéis</button>
+<button data-f="gastro" class="fbtn chip rounded-full px-4 py-2 text-sm">Gastro/Atrativo</button>
+<button onclick="exportFav()" class="rounded-full px-4 py-2 text-sm bg-yellow-400 text-black font-bold">⬇ Exportar ★</button>
+<span id="cnt" class="text-xs text-stone-400 ml-auto"></span>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 pb-20">
+<div class="card p-5 mt-4 border-yellow-500/40">
+<div class="text-sm tracking-widest text-yellow-200">COMECE POR AQUI • MAIOR CONVERSÃO</div>
+<h2 class="serif text-2xl font-black mt-1">1º Agências → 2º Hotéis sem reserva direta → 3º Restaurantes/Atrativos</h2>
+<p class="text-stone-300 text-sm mt-2">Agência decide na hora, sofre com Whats lotado e zero catálogo. Hotel perde 15-20% pro Booking sem reserva direta. Restaurante fecha ticket menor mas indica os outros. Ordem: <b>ADS → Vivaz → Sorritur → Hotel 10 → Recanto Bosque → Imperial → Martini → Costelão → Camelu's → Marina Tapajós.</b></p>
+</div>
+<div id="g" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6"></div>
+<div class="card p-6 mt-8">
+<h3 class="serif text-2xl font-black">Script que fecha em Sorriso</h3>
+<div class="grid md:grid-cols-3 gap-4 mt-3 text-sm">
+<div><b>Whats 1</b><p class="text-stone-300 mt-1 p-3 bg-black/30 rounded-xl">Oi [Nome], Marcos aqui. Vi o [Hotel 10] #1 no Trip mas sem reserva direta, cai pro Booking. Fiz um modelo com botão Whats direto tipo Loft Ametista, quer print de 30s?</p></div>
+<div><b>Ligação 35s</b><p class="text-stone-300 mt-1 p-3 bg-black/30 rounded-xl">Oi [Nome], rapidinho: 85% ocupação mas sem reserva direta no Google. Deixo no ar em 7 dias, com avaliações + Whats. Te mando vídeo 40s de como ficaria? Qual Whats melhor?</p></div>
+<div><b>Follow</b><p class="text-stone-300 mt-1 p-3 bg-black/30 rounded-xl">Esquece site completo. Entrada R$900 + R$297/mês ou R$3.500 à vista. 15 dias teste, se não aumentar direto eu tiro do ar. Topa ver?</p></div>
+</div>
+</div>
+</main>
+<script>
+const D=[
+{n:"ADS Turismo",seg:"agencia",c:"Rua Dos Palmares, 864 • Sorriso",p:"556635440706",pd:"(66) 3544-0706",ig:"",s:"Agência listada sem site, só lista antiga. Dono atende. Catálogo zero.",a:"Catálogo roteiros Pantanal/pesca Teles Pires + Whats por roteiro + Cadastur",why:"Decide hoje, sofre no Whats"},
+{n:"Vivaz Viagens",seg:"agencia",c:"Av Blumenau, 2625 Sl11 • Sorriso",p:"556635450133",pd:"(66) 3545-0133",ig:"",s:"Sem site, só endereço. Perde para quem mostra roteiro com foto.",a:"Vitrine roteiros + depoimentos + botão reservar",why:"Ticket 2,5-5k, fecha rápido"},
+{n:"Sorritur",seg:"agencia",c:"Av Natalino Brescansin, 1124 Centro",p:"556635441902",pd:"(66) 3544-1902",ig:"",s:"E-mail antigo sorritur@, site fraco/inexistente. Marca local forte.",a:"Reforma + roteiros agroturismo + Pixel",why:"Autoridade local, precisa digital"},
+{n:"Hotel 10 Sorriso",seg:"hotel",c:"Av Idemar Riedi, 12366 • 4.8 (65 aval) #1 Trip",p:"556632125410",pd:"(66) 3212-5410",ig:"",s:"Sem reserva direta, usa subdomínio pousadabelasartes. Perde 15-20% Booking.",a:"Página reserva direta -10% + quartos + Maps + avaliações",why:"Prova #1 mas sem casa própria"},
+{n:"Hotel Recanto do Bosque",seg:"hotel",c:"Rua Bene, 1601 • 4.3 (18 aval)",p:"",pd:"validar Maps",ig:"",s:"Trip diz 'é seu?'. Chalés no bosque, café top, zero dono digital.",a:"Chalés + hidro + café + reserva Whats",why:"Produto bom, invisível"},
+{n:"Hotel Imperial Sorriso",seg:"hotel",c:"Perimetral Sudeste, 9675 Jd Américas",p:"",pd:"validar Maps",ig:"",s:"Só subdomínio, piscina/academia/café sem página que venda.",a:"Estrutura + eventos 80 pessoas + reserva",why:"Eventos corporativos"},
+{n:"Hotel e Pousada Martini",seg:"hotel",c:"MT-242 • Sorriso",p:"",pd:"validar Maps",ig:"",s:"Só subdomínio, sem tarifa real-time.",a:"Tarifa + Whats + rota BR-163",why:"Beira estrada, precisa Google"},
+{n:"Caramelo Hospedaria",seg:"hotel",c:"Av Perimetral Sudoeste, 381",p:"",pd:"validar Maps",ig:"",s:"Lista hospedagemdireta 'sob consulta', sem site.",a:"Hospedaria + privativo + direto",why:"Long tail barato de fechar"},
+{n:"Hotel Flor de Ipê / Viajantes / Paraná",seg:"hotel",c:"Centro / Morada do Sol • Sorriso",p:"",pd:"validar Maps 3x",ig:"",s:"3 econômicos sem site, vivem de balcão.",a:"Pack 3 em 1? Fecha 1 e indica outros",why:"Volume"},
+{n:"Costelão Churrascaria",seg:"gastro",c:"Av Tancredo Neves, 164 Centro",p:"5566999981350",pd:"(66) 9998-1350",ig:"",s:"Só portal prefeitura, sem cardápio/reserva online.",a:"Cardápio foto + reservar mesa + delivery",why:"Ticket 1,9-3k, fecha no Whats"},
+{n:"Camelu's Restaurante",seg:"gastro",c:"Av Natalino Brescansin, 1645 • 4.2 (166 aval)",p:"556620139973",pd:"(66) 2013-9973",ig:"",s:"Bem avaliado, sem reserva. Perde grupo corporativo.",a:"Grupo/evento + reserva + japonês/choperia",why:"Prova social pronta"},
+{n:"Egao Sushi / Katô Oriental",seg:"gastro",c:"Av Blumenau Sul",p:"5566999582583",pd:"(66) 99958-2583",ig:"",s:"Dois japoneses só portal, sem delivery próprio.",a:"Delivery + horário + Maps",why:"Jovem, entende digital"},
+{n:"Marina Tapajós + Rios",seg:"gastro",c:"Rio Teles Pires / Celeste / Verde / Lira",p:"",pd:"validar Maps",ig:"",s:"Atrativo oficial sem página de venda. Pesca/caiaque sem agenda.",a:"Passeio + agenda + combo família",why:"Agroturismo em alta"},
+{n:"Recanto Viola / Castelus / Cerrado / Nice Acqua Park",seg:"gastro",c:"Zona Leste / Rota do Sol • Sorriso",p:"",pd:"validar Maps",ig:"",s:"4 parques citados pela prefeitura sem venda online.",a:"Ingresso Whats + calendário + como chegar",why:"Fim de semana 50% → lotar"},
+{n:"Pesque Pague Cuiabano / Sítios / Rancho Vitória",seg:"gastro",c:"Rural Sorriso • Mel / uva / tratores",p:"",pd:"buscar Maps",ig:"",s:"Turismo rural listado sem página. Erva-mate, mel, parreira.",a:"Roteiro rural + agendamento + loja",why:"Diferencial agro"}
+];
+let S=JSON.parse(localStorage.getItem('sorriso_tur_v1')||'{}');let F='all';
+function save(){localStorage.setItem('sorriso_tur_v1',JSON.stringify(S))}
+function fav(i){S[i]=S[i]==='fav'?null:'fav';save();render()}
+function render(){
+let q=(document.getElementById('q').value||'').toLowerCase();
+let g=document.getElementById('g');g.innerHTML='';let shown=0,nfav=Object.values(S).filter(v=>v==='fav').length;
+document.getElementById('nfav').textContent=nfav?`(${nfav})`:'';
+D.forEach((d,i)=>{
+if(F==='fav'&&S[i]!=='fav')return;
+if(F==='tel'&&!d.p)return;
+if(['agencia','hotel','gastro'].includes(F)&&d.seg!==F)return;
+if(q&&!(d.n+' '+d.c).toLowerCase().includes(q))return;
+shown++;
+function msgLead(d){
+if(d.seg==='agencia')return 'Oi '+d.n+', aqui Marcos (11) 93072-9435. Vi que voces montam roteiro mas sem catalogo online e perdem no Google. Fiz um modelo 30s com roteiro + botao reservar, mando aqui?';
+if(d.seg==='hotel')return 'Oi '+d.n+', aqui Marcos (11) 93072-9435. Vi voces bem avaliados mas sem reserva direta, caindo pro Booking com taxa. Fiz pagina com -10% direto + avaliacoes, quer print de 30s?';
+return 'Oi '+d.n+', aqui Marcos (11) 93072-9435. Vi voces no portal de Sorriso sem cardapio/reserva online. Fiz modelo com reserva + Maps, mando?';
+}
+let tel=d.p?`<a href="tel:+${d.p}" class="px-3 py-2 rounded-xl btn-call font-bold text-sm">📞 ${d.pd}</a> <a href="https://wa.me/${d.p}?text=${encodeURIComponent(msgLead(d))}" target="_blank" class="px-3 py-2 rounded-xl btn-wa font-bold text-sm">Whats</a>`:`<a href="https://www.google.com/maps/search/${encodeURIComponent(d.n+' Sorriso MT')}" target="_blank" class="px-3 py-2 rounded-xl bg-stone-700 text-sm">📍 Validar Maps</a>`;
+let ig=d.ig?`<a href="https://www.instagram.com/${d.ig}" target="_blank" class="px-3 py-2 rounded-xl bg-pink-600 text-sm">IG</a>`:`<a href="https://www.google.com/search?q=${encodeURIComponent(d.n+' Sorriso instagram')}" target="_blank" class="px-3 py-2 rounded-xl bg-stone-700 text-sm">Buscar IG</a>`;
+g.innerHTML+=`<div class="card p-5 ${S[i]==='fav'?'fav':''}"><div class="flex justify-between items-start"><div class="text-[11px] tracking-widest text-lime-200/70 uppercase">${d.seg} • ${d.why}</div><button onclick="fav(${i})" class="text-2xl">${S[i]==='fav'?'⭐':'☆'}</button></div><h3 class="serif text-xl font-black mt-1">${i+1}. ${d.n}</h3><div class="text-xs text-stone-400">${d.c}</div><p class="text-sm text-stone-300 mt-2"><b>Resumo:</b> ${d.s}</p><p class="text-sm text-yellow-100/90 mt-1"><b>Site ideal:</b> ${d.a}</p><div class="flex flex-wrap gap-2 mt-3">${tel} ${ig}</div></div>`;
+});
+document.getElementById('cnt').textContent=shown+' / '+D.length;
+document.querySelectorAll('.fbtn').forEach(b=>b.style.borderColor=b.dataset.f===F?'#D4AF37':'#33453c');
+}
+document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{F=b.dataset.f;render()});
+function exportFav(){let rows=[['nome','local','tel','resumo']];D.forEach((d,i)=>{if(S[i]==='fav')rows.push([d.n,d.c,d.pd,d.s])});if(rows.length===1){alert('Marca ★ primeiro');return}let csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='sorriso-turismo-favoritos.csv';a.click()}
+render();
+</script>
+<a href="https://wa.me/5511930729435" target="_blank" style="position:fixed;right:16px;bottom:16px;background:#22c55e;color:#06270f;font-weight:800;padding:14px 18px;border-radius:999px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.4)">💬 Meu Whats: 11 93072-9435</a>
+</body>
+</html>
